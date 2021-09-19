@@ -15,7 +15,7 @@ public class Main {
     private static final String BASE_RESOURCE_PATH = "src/main/resources/";
     private static final int TARGET_IMAGE_SIZE = 15;
     private static final double LEARNING_SPEED = 0.25;
-    public static final String ASTERISK_STING = "asterisk ✱";
+    public static final String ASTERISK_STRING = "asterisk ✱";
     public static final String TRIANGLE_STRING = "triangle ▲";
     public static final String WEIGHTS_TXT = "weights.txt";
     public static final String LEARNING_SET_DIR = "/learning-set/";
@@ -24,7 +24,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         int width = TARGET_IMAGE_SIZE, height = TARGET_IMAGE_SIZE;
         WeightStore weightStore = new WeightStore(BASE_RESOURCE_PATH + WEIGHTS_TXT, width*height);
-        RosenblattPerceptron perceptron = new RosenblattPerceptron(weightStore, LEARNING_SPEED, TRIANGLE_STRING, ASTERISK_STING);
+        RosenblattPerceptron perceptron = new RosenblattPerceptron(weightStore, LEARNING_SPEED, TRIANGLE_STRING, ASTERISK_STRING);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Collection<File> files;
         int[] image;
@@ -59,7 +59,7 @@ public class Main {
                         image = ImageProcessor.prepareImage(ImageProcessor.loadImage(filepath + file.getName()), width, height);
                         output = perceptron.recognizeImage(image);
 
-                        System.out.println("This is " + (output ? (ASTERISK_STING + " [1]!") :  (TRIANGLE_STRING + " [0]!")));
+                        System.out.println("This is " + (output ? (ASTERISK_STRING + " [1]!") :  (TRIANGLE_STRING + " [0]!")));
                     }
                     break;
                 case "q":
