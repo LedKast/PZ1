@@ -80,7 +80,11 @@ public class ImageProcessor {
         }
 
         int maxBorder = Math.max(rightX - offsetX, bottomY - offsetY) + 1;
-        return image.getSubimage(offsetX, offsetY, maxBorder, maxBorder);
+        return image.getSubimage(
+                offsetX,
+                offsetY,
+                Math.min(maxBorder, image.getWidth() - offsetX),
+                Math.min(maxBorder, image.getHeight() - offsetY));
     }
 
     private static int[] toMonochrome(int[] rgb) {
